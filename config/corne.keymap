@@ -38,42 +38,9 @@
                 &kp W &kp G &kp D &kp F &kp B     &kp Y &kp U &kp I &kp O &kp P
                 &kp R &kp S &kp T &kp H &kp K     &kp H &kp J &kp K &kp L &kp QUOT
                 &kp X &kp C &kp M &kp P &kp V     &kp Z &kp COMMA &kp PERIOD &kp DQT &kp FSLH
-                 &kp RGUI &mo 1 &kp SPACE     &kp BSPC &kp LSHIFT &kp ENT
+                 &kp RGUI &kp LCTRL &kp SPACE     &kp BSPC &kp LSHIFT &kp ENT
             >;
         };
-    
-        lower_layer {
-            // 5-column Corne: 3 rows x 5 keys per hand + 3 thumb keys per hand
-            // Layout:
-            // | !  | @  | #  | $  | %  |     | ^  | &  | *  | (  | )  |
-            // | BT1 | BT2 | BT3 | BT4 | BT5 |     | LFT | DWN | UP | RGT |    |
-            // | BTCLR |     |     |     |     |     |     |     |     |     |    |
-            // |     |     | GUI |     | SPC |     | ENT | ESC | TAB |
-            display-name = "Lower";
-            bindings = <
-                &kp EXCL &kp AT &kp HASH &kp DLLR &kp PRCNT     &kp CARET &kp AMPS &kp KP_MULTIPLY &kp LPAR &kp RPAR
-                &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4     &kp LEFT &kp DOWN &kp UP &kp RIGHT &trans
-                &bt BT_CLR &trans &trans &trans &trans     &trans &trans &trans &trans &trans
-                &trans &trans &kp LGUI &trans &kp SPACE     &kp RET &kp ESC &kp TAB
-            >;
-        };
-    
-        raise_layer {
-            // 5-column Corne: 3 rows x 5 keys per hand + 3 thumb keys per hand
-            // Layout:
-            // | 1 | 2 | 3 | 4 | 5 |     | 6 | 7 | 8 | 9 | 0 |
-            // | - | = | { | [ | ( |     | ) | ] | } | / | \ |
-            // | ` |   |   | , | : |     | ; | . | CTRL | META |   |
-            // |   |   | GUI | ESC | SPC |     | ENT |     | TAB |
-            display-name = "Raise";
-            bindings = <
-                &kp N1 &kp N2 &kp N3 &kp N4 &kp N5     &kp N6 &kp N7 &kp N8 &kp N9 &kp N0
-                &kp MINUS &kp EQUAL &kp LBRC &kp LBKT &kp LPAR     &kp RPAR &kp RBKT &kp RBRC &kp FSLH &kp BSLH
-                &kp GRAVE &trans &trans &kp COMMA &kp COLON     &kp SEMI &kp DOT &kp LCTRL &kp RALT &trans
-                &trans &trans &kp LGUI &kp ESC &kp SPACE     &kp RET &trans &kp TAB
-            >;
-        };
-    
         extra_1 {
             status = "reserved";
         };
