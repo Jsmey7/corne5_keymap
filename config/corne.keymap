@@ -12,6 +12,38 @@
     chosen {
         zmk,physical-layout = &foostan_corne_5col_layout;
     };
+    macros {
+        not_equal: not_equal {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp EXCL &kp EQUAL>;
+        };
+        fat_arrow: fat_arrow {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp EQUAL &kp GREATER_THAN>;
+        };
+        arrow: arrow {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp MINUS &kp GREATER_THAN>;
+        };
+        double_colon: double_colon {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp COLON &kp COLON>;
+        };
+        logical_and: logical_and {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp AMPS &kp AMPS>;
+        };
+        logical_or: logical_or {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp PIPE &kp PIPE>;
+        };
+    };
 
     behaviors {
         as: auto_shift {
@@ -21,6 +53,13 @@
             quick_tap_ms = <0>;
             flavor = "tap-preferred";
             bindings = <&kp>, <&kp>;
+        };
+        lt: layer_tap {
+            compatible = "zmk,behavior-layer-tap";
+            #binding-cells = <2>;
+            flavor = "balanced";
+            tapping-term-ms = <200>;
+            quick-tap-ms = <200>;
         };
     };
     keymap {
@@ -32,25 +71,104 @@
             // | W | G | D | F | B |     | Q | L | U | O | Y |
             // | R | S | T | H | K |     | J | N | E | A | I |
             // | X | C | M | P | V |     | Z | COMMA | PERIOD | DQT | FSLH |
-            //   | RGUI | CTRL | SPC |     | BSPC | SHIFT | ENT |
+          //   | RGUI | CTRL | SPC |     | BSPC | SHIFT | ENT |
             display-name = "Base";
             bindings = <
-                &kp W &kp G &kp D &kp F &kp B     &kp Q &kp L &kp U &kp O &kp Y
-                &kp R &kp S &kp T &kp H &kp K     &kp J &kp N &kp E &kp A &kp I
-                &kp X &kp C &kp M &kp P &kp V     &kp Z &kp COMMA &kp DOT &kp DOUBLE_QUOTES &kp SLASH
-                 &kp GUI &kp LCTRL &kp SPACE     &kp BSPC &kp LSHFT &kp SLASH
+                &kp W &kp G &kp D &kp F &kp B           &kp Q &kp L &kp U &kp O &kp Y
+                &kp R &lt 5 S &lt 1 T &lt 3 H &kp K     &kp J &lt 4 N &lt 2 E &lt 6 A &kp I
+                &kp X &kp C &kp M &kp P &kp V           &kp Z &kp COMMA &kp DOT &kp DOUBLE_QUOTES &kp SLASH
+                  &kp GUI &kp LCTRL &kp SPACE           &kp BSPC &kp LSHFT &kp SLASH
             >;
         };
-        extra_1 {
-            status = "reserved";
+        layer1 {
+            // 5-column Corne: 3 rows x 5 keys per hand (10 keys per row) + 3 thumb keys per hand
+            // Layout: 
+            // | NAN | NAN | NAN | NAN | NAN |              | Mouse1 | WeelUP | Mouse2 | NAN | NAN |
+            // | NAN | Mouse1 | MOD | Mouse2 | Nan |        | Mouse L | Mouse D | Mouse UP | Mouse R | NAN |
+            // | NAN | NAN | NAN | NAN | NAN |              | Weel Left | Wheel Down | wheel UP | Wheel R | NAN |
+            //             | NAN | NAN | NAN |              | NAN | NAN | NAN |
+            display-name = "Mouse";
+            bindings = <
+                &none &none &none &none &none     &mkp LCLK &msc SCRL_UP &mkp RCLK &none &none
+                &none &none &none &none &none     &mmv MOVE_LEFT &mmv MOVE_DOWN &mmv MOVE_UP &mmv MOVE_RIGHT &none
+                &none &none &none &none &none     &msc SCRL_LEFT &msc SCRL_DOWN &msc SCRL_UP &msc SCRL_RIGHT &none
+                            &none &none &none     &none &none &none
+            >;
         };
-    
-        extra_2 {
-            status = "reserved";
+        layer2 {
+            // 5-column Corne: 3 rows x 5 keys per hand (10 keys per row) + 3 thumb keys per hand
+            // Layout: 
+            // | NAN | NAN | NAN | PAGE U | ESC |              | NAN | NAN | NAN | NAN | NAN |
+            // | L   | D   | U   | R      | DEL |              | NAN | NAN | MOD | NAN | NAN |
+            // | NAN | NAN | END | PAGE D | NAN |              | NAN | NAN | NAN | NAN | NAN |
+            //                | NAN | NAN | NAN |              | NAN | NAN | NAN |
+            display-name = "Nav";
+            bindings = <
+                &none &none &kp PAGE_UP &kp PAGE_DOWN &kp ESCAPE                                        &none &none &none &none &none
+                &kp LEFT_ARROW &kp DOWN_ARROW &kp UP_ARROW &kp RIGHT_ARROW &kp DEL                      &none &none &none &none &none
+                &kp H &kp J &kp K &kp L &none                                                           &none &none &none &none &none
+                            &none &none &none                                                           &none &none &none
+            >;
         };
-    
-        extra_3 {
-            status = "reserved";
+        layer3 {
+            // 5-column Corne: 3 rows x 5 keys per hand (10 keys per row) + 3 thumb keys per hand
+            // Layout: 
+            // | NAN | NAN | NAN | NAN | NAN |              | _   | {   | }   | =>  | ->  |
+            // | NAN | NAN | != | MOD | &    |              | #   | (   | )   | ;   | :   |
+            // | NAN | NAN | NAN | NAN | NAN |              | @   | $   | ^   | "   | '   |
+            //             | NAN | NAN | NAN |              | NAN | NAN | NAN |
+            display-name = "Symbols Right";
+            bindings = <
+                &none &none &none &none &none             &kp UNDERSCORE &kp LBRC &kp RBRC &fat_arrow &arrow
+                &none &none &not_equal &none &kp AMPS     &kp HASH &kp LPAR &kp RPAR &kp SEMI &kp COLON
+                &none &none &none &none &none             &kp AT &kp DOLLAR &kp CARET &kp DOUBLE_QUOTES &kp SINGLE_QUOTE
+                            &none &none &none             &none &none &none
+            >;
+        };       
+        layer4 {
+            // 5-column Corne: 3 rows x 5 keys per hand (10 keys per row) + 3 thumb keys per hand
+            // Layout: 
+            // | `   | <   | >   |  -  | |   |              | NAN | NAN | NAN | NAN | NAN |
+            // | !   | *   | \   | =   | +   |              | NAN  | MOD | NAN | NAN | NAN |
+            // | ::  | ~   | [   | ]   | %   |              | NAN | NAN | NAN | NAN | NAN |
+            //             | NAN | NAN | NAN |              | NAN | NAN | NAN |
+            display-name = "Symbols Left";
+            bindings = <
+                &kp GRAVE &kp LESS_THAN &kp GREATER_THAN &kp MINUS &kp PIPE               &none &none &none &none &none
+                &kp EXCLAMATION &kp STAR &kp BACKSLASH &kp EQUAL &kp PLUS                 &none &none &none &none &none
+                &double_colon &kp TILDE &kp LEFT_BRACKET &kp LEFT_BRACKET &kp PERCENT     &none &none &none &none &none
+                            &none &none &none                                             &none &none &none
+            >;
+        };       
+        layer5 {
+            // 5-column Corne: 3 rows x 5 keys per hand (10 keys per row) + 3 thumb keys per hand
+            // Layout: 
+            // | NAN | NAN | NAN | NAN | B1  |              | B3  | F7  | F8  | F9  | F10 |
+            // | NAN | MOD | NAN | NAN | B2  |              | B4  | F4  | F5  | F6  | F11 |
+            // | NAN | NAN | NAN | NAN | NAN |              | B5  | F1  | F2  | F3  | F12 |
+            //             | NAN | NAN | NAN |              | NAN | NAN | NAN |
+            display-name = "Functions";
+            bindings = <
+                &none &none &none &none &bt BT_SEL 0     &bt BT_SEL 2 &kp F7 &kp F8 &kp F9 &kp F10
+                &none &none &none &none &bt BT_SEL 1     &bt BT_SEL 3 &kp F4 &kp F5 &kp F6 &kp F11
+                &none &none &none &none &none            &bt BT_SEL 4 &kp F1 &kp F2 &kp F3 &kp F12
+                            &none &none &none            &none &none &none
+            >;
         };
+        layer6 {
+            // 5-column Corne: 3 rows x 5 keys per hand (10 keys per row) + 3 thumb keys per hand
+            // Layout: 
+            // | 6   | 3   | 1   | 2   | 7   |              | NAN | NAN | NAN | NAN | NAN |
+            // | 9   | 4   | 0   | 5   | 8   |              | NAN | MOD | NAN | NAN | NAN |
+            // | &&  | ||  | -   | +   | =   |              | NAN | NAN | NAN | NAN | NAN |
+            //             | NAN | NAN | NAN |              | NAN | NAN | NAN |
+            display-name = "Nav";
+            bindings = <
+                &kp KP_NUMBER_6 &kp KP_NUMBER_3 &kp KP_NUMBER_1 &kp KP_NUMBER_2 &kp KP_NUMBER_7     &none &none &none &none &none
+                &kp KP_NUMBER_9 &kp KP_NUMBER_4 &kp KP_NUMBER_0 &kp KP_NUMBER_5 &kp KP_NUMBER_8     &none &none &none &none &none
+                &logical_and &logical_or &kp MINUX &kp PLUS &kp EQUAL                               &none &none &none &none &none
+                            &none &none &none                                                       &none &none &none
+            >;
+        };  
     };
 };
