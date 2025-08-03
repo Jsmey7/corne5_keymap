@@ -38,7 +38,7 @@
                 &kp W &kp G &kp D &kp F &kp B     &kp Q &kp L &kp U &kp O &kp Y
                 &kp R &kp S &kp T &kp H &kp K     &kp J &kp N &kp E &kp A &kp I
                 &kp X &kp C &kp M &kp P &kp V     &kp Z &kp COMMA &kp DOT &kp DOUBLE_QUOTES &kp SLASH
-                 &kp GUI &kp LCTRL &kp SPACE     &kp X &kp X &kp X
+                 &kp GUI &kp LCTRL &kp SPACE     &kp BSPC &kp X &kp X
             >;
         };
         extra_1 {
