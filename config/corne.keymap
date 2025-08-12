@@ -163,13 +163,13 @@
             // 5-column Corne: 3 rows x 5 keys per hand (10 keys per row) + 3 thumb keys per hand
             // Layout: 
             // | 6   | 3   | 1   | 2   | 7   |              | NAN | NAN | NAN | NAN | NAN |
-            // | 9   | 4   | 0   | 5   | 8   |              | ALT | MOD | SUPER | NAN | NAN |
+            // | 9   | 4   | 0   | 5   | 8   |              | ALT | SUPER | MOD | NAN | NAN |
             // | &&  | ||  | -   | +   | =   |              | NAN | NAN | NAN | NAN | NAN |
             //             | NAN | NAN | NAN |              | NAN | NAN | NAN |
             display-name = "Number";
             bindings = <
-                &kp KP_N6 &kp KP_N3 &kp KP_NUMBER_1 &kp KP_N2 &kp KP_N7     &none &none &none &none &none
-                &kp KP_N9 &kp KP_N4 &kp KP_N0 &kp KP_N5 &kp KP_N8     &sk LALT &none &sk LGUI &none &none
+                &kp N6 &kp N3 &kp N1 &kp N2 &kp N7     &none &none &none &none &none
+                &kp N9 &kp N4 &kp N0 &kp N5 &kp N8     &sk LALT &sk LGUI &none &none &none
                 &logical_and &logical_or &kp MINUS &kp PLUS &kp EQUAL                               &none &none &none &none &none
                             &none &none &none                                                       &none &none &none
             >;
