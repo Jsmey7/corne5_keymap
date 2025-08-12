@@ -125,7 +125,7 @@
             bindings = <
                 &none &none &none &none &none             &kp UNDERSCORE &kp LBRC &kp RBRC &fat_arrow &arrow
                 &none &none &not_equal &none &kp AMPS     &kp HASH &kp LPAR &kp RPAR &kp SEMI &kp COLON
-                &none &none &none &none &none             &kp AT &kp DOLLAR &kp CARET &kp DOUBLE_QUOTES &kp SINGLE_QUOTE
+                &none &none &none &none &none             &kp AT &kp DOLLAR &kp CARET &kp QMARK &kp SINGLE_QUOTE
                             &none &none &none             &none &none &none
             >;
         };       
