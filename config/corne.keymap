@@ -81,7 +81,7 @@
                 &kp W &kp G &kp D &kp F &kp B           &kp Q &kp L &kp U &kp O &kp Y
                 &kp R &lt 5 S &lt 1 T &lt 3 H &kp K     &kp J &lt 4 N &lt 2 E &lt 6 A &kp I
                 &kp X &kp C &kp M &kp P &kp V           &kp Z &kp COMMA &kp DOT &kp DOUBLE_QUOTES &kp SLASH
-                  &kp GUI &kp LCTRL &kp SPACE           &kp BSPC &kp LSHFT &kp ENTER
+                  &kp GUI &kp LCTRL &kp SPACE           &kp BSPC &sk LSHFT &kp ENTER
             >;
         };
         layer1 {
