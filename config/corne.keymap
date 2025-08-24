@@ -61,8 +61,8 @@
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             flavor = "tap-preferred"; // or "balanced", depending on desired behavior
-            tapping-term-ms = <200>;
-            quick-tap-ms = <200>;
+            tapping-term-ms = <350>;
+            quick-tap-ms = <350>;
             bindings = <&mo>, <&kp>; // mo for layer hold, kp for key tap
         };
     };
