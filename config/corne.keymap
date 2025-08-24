@@ -227,11 +227,11 @@
             // |C-/  |     | ^   |   $   | D   |              | h   | j   | k   | l   | e   |
             // | v   | V   | NAN | NAN   | NAN |              | NAN | NAN | NAN | NAN | NAN |
             //               | NAN | NAN | MOD |              | NAN | NAN | NAN |
-            display-name = "Nav";
+            display-name = "Vim";
             bindings = <
-                &none &none &none &kp vim_le &kp ESCAPE                                                       &none &kp A &kp U &kp O &kp I
-                &kp vim_co &none &kp CARET &kp DOLLAR &kp D                                                           &kp H &kp J &kp K &kp L &kp E
-                & V &none &none &none &none                                                           &none &none &none &none &none
+                &none &none &none &vim_le &kp ESCAPE                                                       &none &kp A &kp U &kp O &kp I
+                &vim_co &none &kp CARET &kp DOLLAR &kp D                                                           &kp H &kp J &kp K &kp L &kp E
+                & V &cap_v &none &none &none                                                           &none &none &none &none &none
                             &none &none &none                                                           &none &none &none
             >;
         };
