@@ -45,6 +45,21 @@
             #binding-cells = <0>;
             bindings = <&kp PIPE &kp PIPE>;
         };
+        vim_le: vim_le {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp SEMI &kp G>;
+        };
+       vim_co: vim_co {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_tap &kp LCTRL &kp SLASH>;
+        };
+       cap_v: cap_v {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_tap &kp LSHFT &kp V>;
+        };
     };
 
     behaviors {
@@ -88,6 +103,13 @@
             // hold-trigger-key-positions = <KEYS_L THUMBS>;
             hold-trigger-on-release;
         };
+        lt: layer_tap { 
+            compatible = "zmk,behavior-hold-tap"; 
+            #binding-cells = <2>; flavor = "tap-preferred"; 
+            tapping-term-ms = <300>; 
+            quick-tap-ms = <300>;     
+            bindings = <&mo>, <&kp>;     
+        };
     };
     keymap {
         compatible = "zmk,keymap";
@@ -102,9 +124,9 @@
             display-name = "Base";
             bindings = <
                 &kp W &kp G &kp D &kp F &kp B           &kp Q &kp L &kp U &kp O &kp Y
-                &kp R &hml 5 S &hml 1 T &hml 3 H &kp K     &kp J &hmr 4 N &hmr 2 E &hmr 6 A &kp I
+                &kp R &lt 5 S &lt 1 T &lt 3 H &kp K     &kp J &lt 4 N &lt 2 E &lt 6 A &kp I
                 &kp X &kp C &kp M &kp P &kp V           &kp Z &kp COMMA &kp DOT &kp DOUBLE_QUOTES &kp COLON
-                  &kp GUI &kp LCTRL &kp SPACE           &kp BSPC &sk LSHFT &kp ENTER
+                  &kp GUI &kp LCTRL &lt 7 SPACE           &kp BSPC &sk LSHFT &kp ENTER
             >;
         };
         layer1 {
@@ -195,6 +217,21 @@
                 &none &none &kp PAGE_UP &kp PAGE_DOWN &kp ESCAPE                                        &none &none &none &none &none
                 &kp LEFT_ARROW &kp DOWN_ARROW &kp UP_ARROW &kp RIGHT_ARROW &kp DEL                      &none &none &none &none &none
                 &kp H &kp J &kp K &kp L &none                                                           &none &none &none &none &none
+                            &none &none &none                                                           &none &none &none
+            >;
+        };
+        layer7 {
+            // 5-column Corne: 3 rows x 5 keys per hand (10 keys per row) + 3 thumb keys per hand
+            // Layout: 
+            // | NAN | NAN | NAN | g;    | ESC |              | NAN | A   | U   |  O  | I   |
+            // |C-/  |     | ^   |   $   | D   |              | h   | j   | k   | l   | e   |
+            // | v   | V   | NAN | NAN   | NAN |              | NAN | NAN | NAN | NAN | NAN |
+            //               | NAN | NAN | MOD |              | NAN | NAN | NAN |
+            display-name = "Nav";
+            bindings = <
+                &none &none &none &kp vim_le &kp ESCAPE                                                       &none &kp A &kp U &kp O &kp I
+                &kp vim_co &none &kp CARET &kp DOLLAR &kp D                                                           &kp H &kp J &kp K &kp L &kp E
+                & V &none &none &none &none                                                           &none &none &none &none &none
                             &none &none &none                                                           &none &none &none
             >;
         };
