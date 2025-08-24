@@ -65,6 +65,29 @@
             quick-tap-ms = <350>;
             bindings = <&mo>, <&kp>; // mo for layer hold, kp for key tap
         };
+        hml: homerow_mods_left {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "balanced";
+            tapping-term-ms = <280>;
+            quick-tap-ms = <175>;
+            require-prior-idle-ms = <150>;
+            bindings = <&kp>, <&kp>;
+            hold-trigger-key-positions = <KEYS_R THUMBS>;
+            hold-trigger-on-release;
+        };
+    
+        hmr: homerow_mods_right {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "balanced";
+            tapping-term-ms = <280>;
+            quick-tap-ms = <175>;
+            require-prior-idle-ms = <150>;
+            bindings = <&kp>, <&kp>;
+            hold-trigger-key-positions = <KEYS_L THUMBS>;
+            hold-trigger-on-release;
+        };
     };
     keymap {
         compatible = "zmk,keymap";
@@ -74,13 +97,13 @@
             // Layout: 
             // | W | G | D | F | B |     | Q | L | U | O | Y |
             // | R | S | T | H | K |     | J | N | E | A | I |
-            // | X | C | M | P | V |     | Z | COMMA | PERIOD | DQT | FSLH |
+            // | X | C | M | P | V |     | Z | , | . | " | : |
           //   | RGUI | CTRL | SPC |     | BSPC | SHIFT | ENT |
             display-name = "Base";
             bindings = <
                 &kp W &kp G &kp D &kp F &kp B           &kp Q &kp L &kp U &kp O &kp Y
-                &kp R &lt 5 S &lt 1 T &lt 3 H &kp K     &kp J &lt 4 N &lt 2 E &lt 6 A &kp I
-                &kp X &kp C &kp M &kp P &kp V           &kp Z &kp COMMA &kp DOT &kp DOUBLE_QUOTES &kp SLASH
+                &kp R &hml 5 S &hml 1 T &hml 3 H &kp K     &kp J &hmr 4 N &hmr 2 E &hmr 6 A &kp I
+                &kp X &kp C &kp M &kp P &kp V           &kp Z &kp COMMA &kp DOT &kp DOUBLE_QUOTES &kp COLON
                   &kp GUI &kp LCTRL &kp SPACE           &kp BSPC &sk LSHFT &kp ENTER
             >;
         };
@@ -119,13 +142,13 @@
             // 5-column Corne: 3 rows x 5 keys per hand (10 keys per row) + 3 thumb keys per hand
             // Layout: 
             // | NAN | NAN | NAN | NAN | NAN |              | _   | {   | }   | =>  | ->  |
-            // | NAN | NAN | != | MOD | &    |              | #   | (   | )   | ;   | :   |
+            // | NAN | NAN | != | MOD | &    |              | #   | (   | )   | ;   | /   |
             // | NAN | NAN | NAN | NAN | NAN |              | @   | $   | ^   | "   | '   |
             //             | NAN | NAN | NAN |              | NAN | NAN | NAN |
             display-name = "Symbols Right";
             bindings = <
                 &none &none &none &none &none             &kp UNDERSCORE &kp LBRC &kp RBRC &fat_arrow &arrow
-                &none &none &not_equal &none &kp AMPS     &kp HASH &kp LPAR &kp RPAR &kp SEMI &kp COLON
+                &none &none &not_equal &none &kp AMPS     &kp HASH &kp LPAR &kp RPAR &kp SEMI &kp SLASH
                 &none &none &none &none &none             &kp AT &kp DOLLAR &kp CARET &kp QMARK &kp SINGLE_QUOTE
                             &none &none &none             &none &none &none
             >;
