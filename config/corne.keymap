@@ -124,115 +124,39 @@
             display-name = "Base";
             bindings = <
                 &kp W &kp G &kp D &kp F &kp B           &kp Q &kp L &kp U &kp O &kp Y
-                &kp R &lt 5 S &lt 1 T &lt 3 H &kp K     &kp J &lt 4 N &lt 2 E &lt 6 A &kp I
+                &kp R &kp S &lt 4 T &lt 2 H &kp K     &kp J &lt 3 N &lt 1 E &kp A &kp I
                 &kp X &kp C &kp M &kp P &kp V           &kp Z &kp COMMA &kp DOT &kp DOUBLE_QUOTES &kp COLON
                   &kp GUI &kp LCTRL &lt 7 SPACE           &kp BSPC &sk LSHFT &kp ENTER
             >;
         };
-        layer1 {
-            // 5-column Corne: 3 rows x 5 keys per hand (10 keys per row) + 3 thumb keys per hand
-            // Layout: 
-            // | NAN | NAN | NAN | NAN | NAN |              | Mouse1 | WeelUP | Mouse2 | NAN | NAN |
-            // | NAN | Mouse1 | MOD | Mouse2 | Nan |        | Mouse L | Mouse D | Mouse UP | Mouse R | NAN |
-            // | NAN | NAN | NAN | NAN | NAN |              | Weel Left | Wheel Down | wheel UP | Wheel R | NAN |
-            //             | NAN | NAN | NAN |              | NAN | NAN | NAN |
-            display-name = "Mouse";
+
+        num_sym_layer {
+            // Layout: Complete symbols for programming
+            // | 1 | 2 | 3 | 4 | 5 |     | _ | { | } | [ | ] |
+            // | 6 | 7 | 8 | 9 | 0 |     | / | ( | ) | < | > |
+            // | ! | @ | # | $ | % |     | * | = | + | - | & |
+            //       | NAN  | ALT |     | RGUI | SHIFT |   CTRL |
+            display-name = "Num/Sym";
             bindings = <
-                &none &none &none &none &none           &mkp LCLK &msc SCRL_UP &mkp RCLK &none &none
-                &none &none &none &none &none           &mmv MOVE_LEFT &mmv MOVE_DOWN &mmv MOVE_UP &mmv MOVE_RIGHT &none
-                &none &none &none &none &none           &msc SCRL_LEFT &msc SCRL_DOWN &msc SCRL_UP &msc SCRL_RIGHT &none
-                            &none &none &none           &none &none &none
-            >;
-        };
-        layer2 {
-            // 5-column Corne: 3 rows x 5 keys per hand (10 keys per row) + 3 thumb keys per hand
-            // Layout: 
-            // | 1   | 2   | 3   | 4   | 5   |              | NAN | NAN | NAN | NAN | NAN |
-            // | 6   | 7   | 8   | 9   | 0   |              | ALT | SUPER | MOD | NAN | NAN |
-            // | &&  | ||  | -   | +   | =   |              | NAN | NAN | NAN | NAN | NAN |
-            //             | NAN | NAN | NAN |              | NAN | NAN | NAN |
-            display-name = "Number";
-            bindings = <
-                &kp N6 &kp N3 &kp N1 &kp N2 &kp N7     &none &none &none &none &none
-                &kp N9 &kp N4 &kp N0 &kp N5 &kp N8     &sk LALT &sk LGUI &none &none &none
-                &logical_and &logical_or &kp MINUS &kp PLUS &kp EQUAL                               &none &none &none &none &none
-                            &none &none &none                                                       &none &none &none
+                &kp N1 &kp N2 &kp N3 &kp N4 &kp N5     &kp UNDERSCORE &kp LBRC &kp RBRC &kp LEFT_BRACKET &kp RIGHT_BRACKET
+                &kp N6 &kp N7 &kp N8 &kp N9 &kp N0     &kp SLASH &kp LPAR &kp RPAR &kp LESS &kp GREATER
+                &kp EXCL &kp AT &kp HASH &kp DOLLAR &kp PERCENT     &kp STAR &kp EQUAL &kp PLUS &kp MINUS &kp AMPS
+                  &kp BSPC &kp DEL           &kp SPACE &kp ENTER &kp TAB
             >;
         };
 
-        layer3 {
-            // 5-column Corne: 3 rows x 5 keys per hand (10 keys per row) + 3 thumb keys per hand
-            // Layout: 
-            // | NAN | NAN | NAN | NAN | NAN |              | _   | {   | }   | =>  | ->  |
-            // | NAN | NAN | != | MOD | &    |              | #   | (   | )   | ;   | /   |
-            // | NAN | NAN | NAN | NAN | NAN |              | @   | $   | ^   | "   | '   |
-            //             | NAN | NAN | NAN |              | NAN | NAN | NAN |
-            display-name = "Symbols Right";
-            bindings = <
-                &none &none &none &none &none             &kp UNDERSCORE &kp LBRC &kp RBRC &fat_arrow &arrow
-                &none &none &not_equal &none &kp AMPS     &kp HASH &kp LPAR &kp RPAR &kp SEMI &kp SLASH
-                &none &none &none &none &none             &kp AT &kp DOLLAR &kp CARET &kp QMARK &kp SINGLE_QUOTE
-                            &none &none &none             &none &none &none
-            >;
-        };       
-        layer4 {
-            // 5-column Corne: 3 rows x 5 keys per hand (10 keys per row) + 3 thumb keys per hand
-            // Layout: 
-            // | `   | <   | >   |  -  | |   |              | NAN | NAN | NAN | NAN | NAN |
-            // | !   | *   | \   | =   | +   |              | NAN  | MOD | NAN | NAN | NAN |
-            // | ::  | ~   | [   | ]   | %   |              | NAN | NAN | NAN | NAN | NAN |
-            //             | NAN | NAN | NAN |              | NAN | NAN | NAN |
-            display-name = "Symbols Left";
-            bindings = <
-                &kp GRAVE &kp LESS_THAN &kp GREATER_THAN &kp MINUS &kp PIPE               &none &none &none &none &none
-                &kp EXCLAMATION &kp STAR &kp BACKSLASH &kp EQUAL &kp PLUS                 &none &none &none &none &none
-                &double_colon &kp TILDE &kp LEFT_BRACKET &kp LEFT_BRACKET &kp PERCENT     &none &none &none &none &none
-                            &none &none &none                                             &none &none &none
-            >;
-        };       
-        layer5 {
-            // 5-column Corne: 3 rows x 5 keys per hand (10 keys per row) + 3 thumb keys per hand
-            // Layout: 
-            // | NAN | NAN | NAN | NAN | B1  |              | B3  | F7  | F8  | F9  | F10 |
-            // | NAN | MOD | NAN | NAN | B2  |              | B4  | F4  | F5  | F6  | F11 |
-            // | NAN | NAN | NAN | NAN | NAN |              | B5  | F1  | F2  | F3  | F12 |
-            //             | NAN | NAN | NAN |              | NAN | NAN | NAN |
-            display-name = "Functions";
-            bindings = <
-                &none &none &none &none &bt BT_SEL 0     &bt BT_SEL 2 &kp F7 &kp F8 &kp F9 &kp F10
-                &none &none &none &none &bt BT_SEL 1     &bt BT_SEL 3 &kp F4 &kp F5 &kp F6 &kp F11
-                &none &none &none &none &none            &bt BT_SEL 4 &kp F1 &kp F2 &kp F3 &kp F12
-                            &none &none &none            &none &none &none
-            >;
-        };
-        layer6 {
-            // 5-column Corne: 3 rows x 5 keys per hand (10 keys per row) + 3 thumb keys per hand
-            // Layout: 
-            // | NAN | NAN | NAN | PAGE U | ESC |              | NAN | NAN | NAN | NAN | NAN |
-            // | L   | D   | U   | R      | DEL |              | NAN | NAN | MOD | NAN | NAN |
-            // | NAN | NAN | END | PAGE D | NAN |              | NAN | NAN | NAN | NAN | NAN |
-            //                | NAN | NAN | NAN |              | NAN | NAN | NAN |
-            display-name = "Nav";
-            bindings = <
-                &none &none &kp PAGE_UP &kp PAGE_DOWN &kp ESCAPE                                        &none &none &none &none &none
-                &kp LEFT_ARROW &kp DOWN_ARROW &kp UP_ARROW &kp RIGHT_ARROW &kp DEL                      &none &none &none &none &none
-                &kp H &kp J &kp K &kp L &none                                                           &none &none &none &none &none
-                            &none &none &none                                                           &none &none &none
-            >;
-        };
-        layer7 {
-            // 5-column Corne: 3 rows x 5 keys per hand (10 keys per row) + 3 thumb keys per hand
-            // Layout: 
-            // | NAN | NAN | NAN | g;    | ESC |              | NAN | A   | U   |  O  | I   |
-            // |C-/  |     | ^   |   $   | D   |              | h   | j   | k   | l   | e   |
-            // | v   | V   | NAN | NAN   | NAN |              | NAN | NAN | NAN | NAN | NAN |
-            //               | NAN | NAN | MOD |              | NAN | NAN | NAN |
+        vim_layer {
+            // Layout: Comprehensive Vim for programming
+            // | w | b | f | t | ESC |     | a | A | u | O | I |
+            // | y | c | ^ | $ | d  |     | h | j | k | l | e |
+            // | v | V | / | ? | n  |     | { | } | [ | ] | . |
+            //         | NAN  | P   |      | NAN | NAN | NAN |
             display-name = "Vim";
             bindings = <
-                &none &none &none &vim_le &kp ESCAPE                                                       &none &kp A &kp U &kp O &kp I
-                &vim_co &none &kp CARET &kp DOLLAR &kp D                                                           &kp H &kp J &kp K &kp L &kp E
-                &kp V &cap_v &none &none &none                                                           &none &none &none &none &none
-                            &none &none &none                                                           &none &none &none
+                &kp W &kp B &kp F &kp T &kp ESC           &kp A &kp A &kp U &kp O &kp I
+                &kp Y &kp C &kp CARET &kp DOLLAR &kp D     &kp H &kp J &kp K &kp L &kp E
+                &kp V &kp V &kp SLASH &kp QMARK &kp N     &kp LBRC &kp RBRC &kp LEFT_BRACKET &kp RIGHT_BRACKET &kp DOT
+                  &kp BSPC &kp DEL           &kp SPACE &kp ENTER &kp TAB
             >;
         };
     };
